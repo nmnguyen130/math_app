@@ -1,9 +1,8 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { Redirect } from "expo-router";
 
-export default function Index() {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  );
-}
+const MainScreen = () => {
+  return <Redirect href={"/(stack)/home"} />;
+};
+
+export default MainScreen;
