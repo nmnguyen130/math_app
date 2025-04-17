@@ -1,27 +1,45 @@
-export type ThemeColorsType = {
-  background: string;
-  card: string;
-  text: string;
-  border: string;
-  notification: string;
-  secondaryText: string;
-  highlight: string;
-};
-
-// Color pallete
+// Color palette
 export const Colors = {
-  // Primary colors
+  // Primary colors - Educational Blue
   primary: {
-    50: "#e6f7ff",
-    100: "#bae7ff",
-    200: "#91d5ff",
-    300: "#69c0ff",
-    400: "#40a9ff",
-    500: "#1890ff", // Main primary color
-    600: "#096dd9",
-    700: "#0050b3",
-    800: "#003a8c",
-    900: "#002766",
+    50: "#e6f1ff",
+    100: "#cce3ff",
+    200: "#99c7ff",
+    300: "#66abff",
+    400: "#338fff",
+    500: "#0073ff", // Main primary color
+    600: "#005cd9",
+    700: "#0046b3",
+    800: "#002f8c",
+    900: "#001966",
+  },
+
+  // Secondary colors - Purple for creativity
+  secondary: {
+    50: "#f2e6ff",
+    100: "#e5ccff",
+    200: "#cc99ff",
+    300: "#b266ff",
+    400: "#9933ff",
+    500: "#8000ff", // Main secondary color
+    600: "#6600cc",
+    700: "#4d0099",
+    800: "#330066",
+    900: "#1a0033",
+  },
+
+  // Accent colors - Green for growth and learning
+  accent: {
+    50: "#e6fff2",
+    100: "#ccffe5",
+    200: "#99ffcc",
+    300: "#66ffb2",
+    400: "#33ff99",
+    500: "#00ff80", // Main accent color
+    600: "#00cc66",
+    700: "#00994d",
+    800: "#006633",
+    900: "#00331a",
   },
 
   // Neutral colors
@@ -39,32 +57,44 @@ export const Colors = {
   },
 
   // Semantic colors
-  success: "#52c41a",
-  warning: "#faad14",
-  error: "#f5222d",
-  info: "#1890ff",
+  success: "#22c55e", // Green
+  warning: "#f59e0b", // Amber
+  error: "#ef4444", // Red
+  info: "#0073ff", // Blue (same as primary)
 
   // Theme colors
   light: {
     background: "#ffffff",
     card: "#ffffff",
-    text: "#000000",
+    text: "#171717",
     border: "#e5e5e5",
-    notification: "#1890ff",
+    primary: "#0073ff",
+    secondary: "#8000ff",
+    accent: "#00cc66",
+    success: "#22c55e",
+    warning: "#f59e0b",
+    error: "#ef4444",
+    info: "#0073ff",
     secondaryText: "#737373",
     highlight: "#f5f5f5",
-  } as ThemeColorsType,
+  },
 
   dark: {
-    background: "#000000",
-    card: "#171717",
+    background: "#121212",
+    card: "#1e1e1e",
     text: "#ffffff",
     border: "#404040",
-    notification: "#1890ff",
+    primary: "#338fff",
+    secondary: "#9933ff",
+    accent: "#33ff99",
+    success: "#4ade80",
+    warning: "#fbbf24",
+    error: "#f87171",
+    info: "#338fff",
     secondaryText: "#a3a3a3",
-    highlight: "#262626",
-  } as ThemeColorsType,
-};
+    highlight: "#2a2a2a",
+  },
+} as const;
 
 // Typography
 export const Typography = {
@@ -79,17 +109,17 @@ export const Typography = {
     "4xl": 36,
   },
   fontWeights: {
-    normal: "400" as const,
-    medium: "500" as const,
-    semibold: "600" as const,
-    bold: "700" as const,
+    normal: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700",
   },
   lineHeights: {
     tight: 1.25,
     normal: 1.5,
     relaxed: 1.75,
   },
-};
+} as const;
 
 // Spacing
 export const Spacing = {
@@ -108,7 +138,7 @@ export const Spacing = {
   "20": 80,
   "24": 96,
   "32": 128,
-};
+} as const;
 
 // Border radius
 export const BorderRadius = {
@@ -120,15 +150,7 @@ export const BorderRadius = {
   "2xl": 16,
   "3xl": 24,
   full: 9999,
-};
-
-export type ShadowType = {
-  shadowColor: string;
-  shadowOffset: { width: number; height: number };
-  shadowOpacity: number;
-  shadowRadius: number;
-  elevation: number;
-};
+} as const;
 
 // Shadows
 export const Shadows = {
@@ -138,22 +160,22 @@ export const Shadows = {
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
     elevation: 1,
-  } as ShadowType,
+  },
   md: {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
     elevation: 4,
-  } as ShadowType,
+  },
   lg: {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
-  } as ShadowType,
-};
+  },
+} as const;
 
 // Math-specific constants
 export const MathConstants = {

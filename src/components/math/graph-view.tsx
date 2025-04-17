@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Dimensions } from "react-native";
-import { Card, Text } from "@/components/ui";
-import { useTheme } from "@/components/theme/theme-provider";
+import { Card, Text } from "@components/ui";
+import { useTheme } from "@components/theme/theme-provider";
 
 // In a real app, you would use a library like react-native-svg or a WebView with a graphing library
 // This is a placeholder component
@@ -19,7 +19,7 @@ const GraphView: React.FC<GraphViewProps> = ({
   showGrid = true,
   showAxes = true,
 }) => {
-  const { isDarkMode } = useTheme();
+  const { colors } = useTheme();
   const screenWidth = Dimensions.get("window").width - 32; // Accounting for padding
 
   return (
@@ -33,7 +33,7 @@ const GraphView: React.FC<GraphViewProps> = ({
         }}
       >
         <Text>Graph for: {equation}</Text>
-        <Text variant="body-sm" color={isDarkMode ? "#a3a3a3" : "#737373"}>
+        <Text variant="body-sm" color={colors.secondaryText}>
           {showGrid ? "Grid enabled" : "Grid disabled"} •{" "}
           {showAxes ? "Axes enabled" : "Axes disabled"}
         </Text>

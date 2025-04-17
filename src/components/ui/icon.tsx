@@ -1,6 +1,6 @@
 import React from "react";
 import { View, type ViewProps } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
+import { useTheme } from "@components/theme/theme-provider";
 
 interface IconProps extends ViewProps {
   size?: number;
@@ -9,7 +9,7 @@ interface IconProps extends ViewProps {
 }
 
 const Icon: React.FC<IconProps> = ({
-  size = 24,
+  size = 20,
   color,
   style,
   children,

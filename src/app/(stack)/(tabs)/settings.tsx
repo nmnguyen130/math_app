@@ -1,5 +1,5 @@
-import { View, ScrollView, Switch } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
+import { View, ScrollView, Switch, StyleSheet } from "react-native";
+import { useTheme } from "@components/theme/theme-provider";
 import {
   Moon,
   Sun,
@@ -8,10 +8,10 @@ import {
   HelpCircle,
   Languages,
 } from "lucide-react-native";
-import { Text, Card, Icon, Button } from "@/components/ui";
+import { Text, Card, Icon, Button } from "@components/ui";
 
 const SettingsScreen = () => {
-  const { isDarkMode, theme, setTheme } = useTheme();
+  const { colors, isDarkMode, theme, setTheme } = useTheme();
 
   const themeOptions = [
     { label: "Light Mode", value: "light", icon: <Sun /> },

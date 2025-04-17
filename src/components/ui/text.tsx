@@ -4,8 +4,8 @@ import {
   type TextStyle,
   type TextProps as RNTextProps,
 } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
-import { Typography } from "@/constants/theme";
+import { useTheme } from "@components/theme/theme-provider";
+import { Typography } from "@constants/theme";
 
 type TextVariant =
   | "h1"
@@ -34,7 +34,7 @@ const Text: React.FC<TextProps> = ({
   children,
   ...props
 }) => {
-  const { colors, isDarkMode } = useTheme();
+  const { colors } = useTheme();
 
   const getVariantStyle = (): TextStyle => {
     switch (variant) {
@@ -108,19 +108,19 @@ const Text: React.FC<TextProps> = ({
     }
   };
 
+  const getAlignStyle = (): TextStyle => {
+    return { textAlign: align };
+  };
+
+  const textStyle: TextStyle = {
+    ...getVariantStyle(),
+    ...getWeightStyle(),
+    ...getAlignStyle(),
+    color: color || colors.text,
+  };
+
   return (
-    <RNText
-      style={[
-        getVariantStyle(),
-        getWeightStyle(),
-        {
-          color: color || colors.text,
-          textAlign: align,
-        },
-        style,
-      ]}
-      {...props}
-    >
+    <RNText style={[textStyle, style]} {...props}>
       {children}
     </RNText>
   );

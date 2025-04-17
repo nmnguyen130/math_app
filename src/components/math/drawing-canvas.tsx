@@ -1,7 +1,8 @@
 import React from "react";
 import { useRef, useState } from "react";
 import { View, PanResponder, Animated, StyleSheet } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
+import { useTheme } from "@components/theme/theme-provider";
+import { BorderRadius } from "@constants/theme";
 
 interface Point {
   x: number;
@@ -25,7 +26,7 @@ const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
   strokeWidth = 3,
   onPathsChange,
 }) => {
-  const { isDarkMode } = useTheme();
+  const { colors } = useTheme();
   const [paths, setPaths] = useState<Path[]>([]);
   const [currentPath, setCurrentPath] = useState<Point[]>([]);
 
@@ -116,8 +117,8 @@ const DrawingCanvas: React.FC<DrawingCanvasProps> = ({
     <View
       style={{
         flex: 1,
-        backgroundColor: isDarkMode ? "#262626" : "#f5f5f5",
-        borderRadius: 8,
+        backgroundColor: colors.highlight,
+        borderRadius: BorderRadius.lg,
       }}
       {...panResponder.panHandlers}
     >

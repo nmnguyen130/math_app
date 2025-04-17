@@ -1,6 +1,6 @@
 import "../global.css";
 import { Stack } from "expo-router";
-import ThemeProvider, { useTheme } from "@/components/theme/theme-provider";
+import ThemeProvider, { useTheme } from "@components/theme/theme-provider";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -23,6 +23,7 @@ const RootLayoutNav = () => {
           contentStyle: {
             backgroundColor: colors.background,
           },
+          headerShadowVisible: false,
         }}
       >
         <Stack.Screen name="(stack)" options={{ headerShown: false }} />

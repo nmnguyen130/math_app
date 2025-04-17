@@ -1,8 +1,7 @@
 import React from "react";
-import { Text, Card } from "@/components/ui";
-import { useTheme } from "@/components/theme/theme-provider";
-import { formatMathExpression } from "@/utils/helpers";
-import { Colors } from "@/constants/theme";
+import { Text, Card } from "@components/ui";
+import { useTheme } from "@components/theme/theme-provider";
+import { formatMathExpression } from "@utils/helpers";
 
 interface MathEquationProps {
   equation: string;
@@ -17,7 +16,7 @@ const MathEquation: React.FC<MathEquationProps> = ({
   showBorder = true,
   size = "md",
 }) => {
-  const { isDarkMode } = useTheme();
+  const { colors } = useTheme();
 
   const getFontSize = () => {
     switch (size) {
@@ -32,19 +31,12 @@ const MathEquation: React.FC<MathEquationProps> = ({
     }
   };
 
-  const getBackgroundColor = () => {
-    if (isHighlighted) {
-      return isDarkMode ? "rgba(24, 144, 255, 0.1)" : "rgba(24, 144, 255, 0.1)";
-    }
-    return isDarkMode ? Colors.dark.card : Colors.light.card;
-  };
-
   return (
     <Card
       variant={showBorder ? "outlined" : "filled"}
       style={{
-        backgroundColor: getBackgroundColor(),
-        borderColor: isHighlighted ? Colors.primary[500] : undefined,
+        backgroundColor: isHighlighted ? `${colors.primary}20` : colors.card,
+        borderColor: isHighlighted ? colors.primary : colors.border,
         padding: size === "sm" ? 8 : size === "lg" ? 16 : 12,
       }}
     >

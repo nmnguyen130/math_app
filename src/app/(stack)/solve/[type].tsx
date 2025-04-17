@@ -1,13 +1,9 @@
 import { View, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { useTheme } from "@/components/theme/theme-provider";
+import { useTheme } from "@components/theme/theme-provider";
 import { Edit, Bookmark } from "lucide-react-native";
-import { Text, Card, Button, Icon } from "@/components/ui";
-import {
-  MathEquation,
-  StepByStepSolution,
-  GraphView,
-} from "@/components/math/";
+import { Text, Card, Button, Icon } from "@components/ui";
+import { MathEquation, StepByStepSolution, GraphView } from "@components/math";
 
 const SolveScreen = () => {
   const { type } = useLocalSearchParams();

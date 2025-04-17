@@ -5,9 +5,9 @@ import {
   TextInput,
   type TextInputProps,
 } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
+import { useTheme } from "@components/theme/theme-provider";
 import Text from "./text";
-import { Colors, BorderRadius, Typography } from "@/constants/theme";
+import { BorderRadius, Typography } from "@constants/theme";
 
 interface InputProps extends TextInputProps {
   label?: string;
@@ -16,7 +16,6 @@ interface InputProps extends TextInputProps {
   rightIcon?: React.ReactNode;
   onRightIconPress?: () => void;
   variant?: "outline" | "filled" | "underlined";
-  helperText?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -26,7 +25,6 @@ const Input: React.FC<InputProps> = ({
   rightIcon,
   onRightIconPress,
   variant = "outline",
-  helperText,
   style,
   ...props
 }) => {
@@ -34,15 +32,15 @@ const Input: React.FC<InputProps> = ({
 
   const getContainerStyle = () => {
     const baseStyle = {
-      width: "100%" as const,
-    };
+      width: "100%",
+    } as const;
 
     switch (variant) {
       case "outline":
         return {
           ...baseStyle,
           borderWidth: 1,
-          borderColor: error ? Colors.error : colors.border,
+          borderColor: error ? colors.error : colors.border,
           borderRadius: BorderRadius.lg,
           backgroundColor: "transparent",
         };
@@ -58,7 +56,7 @@ const Input: React.FC<InputProps> = ({
           ...baseStyle,
           borderWidth: 0,
           borderBottomWidth: 1,
-          borderColor: error ? Colors.error : colors.border,
+          borderColor: error ? colors.error : colors.border,
           borderRadius: 0,
           backgroundColor: "transparent",
         };
@@ -122,7 +120,7 @@ const Input: React.FC<InputProps> = ({
           style={{
             marginTop: 4,
             fontSize: Typography.fontSizes.sm,
-            color: Colors.error,
+            color: colors.error,
           }}
         >
           {error}

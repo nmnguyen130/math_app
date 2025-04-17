@@ -4,12 +4,15 @@ import Card from "./card";
 import Text from "./text";
 import Icon from "./icon";
 import { Play } from "lucide-react-native";
+import { useTheme } from "@components/theme/theme-provider";
+import { BorderRadius } from "@constants/theme";
 
 interface VideoCardProps {
   title: string;
   source: string;
   thumbnail: ImageSourcePropType;
   duration?: string;
+  category?: string;
   onPress?: () => void;
 }
 
@@ -18,66 +21,77 @@ const VideoCard: React.FC<VideoCardProps> = ({
   source,
   thumbnail,
   duration,
+  category,
   onPress,
 }) => {
+  const { colors, isDarkMode } = useTheme();
+
+  const getCategoryColor = () => {
+    switch (category) {
+      case "Algebra":
+        return colors.primary;
+      case "Calculus":
+        return colors.secondary;
+      case "Geometry":
+        return colors.accent;
+      case "Trigonometry":
+        return colors.warning;
+      case "Statistics":
+        return colors.info;
+      default:
+        return colors.primary;
+    }
+  };
+
   return (
-    <Card variant="outlined" onPress={onPress} style={{ marginBottom: 8 }}>
-      <View style={{ flexDirection: "row" }}>
-        <View style={{ position: "relative", marginRight: 12 }}>
-          <Image
-            source={thumbnail}
-            style={{ width: 80, height: 80, borderRadius: 8 }}
-            resizeMode="cover"
-          />
-          <View
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-                borderRadius: 999,
-                padding: 4,
-              }}
-            >
-              <Icon>
-                <Play size={16} color="#fff" fill="#fff" />
-              </Icon>
-            </View>
+    <Card
+      variant="outlined"
+      onPress={onPress}
+      className={`mb-4 rounded-xl overflow-hidden border ${
+        isDarkMode ? "border-neutral-800" : "border-neutral-200"
+      }`}
+    >
+      <View className="relative">
+        <Image source={thumbnail} className="w-full h-48" resizeMode="cover" />
+
+        {/* Play button overlay */}
+        <View className="absolute inset-0 items-center justify-center">
+          <View className="bg-black/50 rounded-full p-3">
+            <Icon>
+              <Play size={24} color="#fff" fill="#fff" />
+            </Icon>
           </View>
-          {duration && (
-            <View
-              style={{
-                position: "absolute",
-                bottom: 0,
-                right: 0,
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
-                borderRadius: 4,
-                paddingHorizontal: 4,
-                paddingVertical: 2,
-              }}
-            >
-              <Text variant="caption" color="#fff">
-                {duration}
-              </Text>
-            </View>
-          )}
         </View>
-        <View style={{ flex: 1 }}>
-          <Text weight="medium" numberOfLines={2}>
-            {title}
-          </Text>
-          <Text variant="body-sm" style={{ marginTop: 4 }}>
-            {source}
-          </Text>
-        </View>
+
+        {/* Duration badge */}
+        {duration && (
+          <View className="absolute bottom-2 right-2 bg-black/70 px-2 py-1 rounded">
+            <Text variant="caption" color="#fff">
+              {duration}
+            </Text>
+          </View>
+        )}
+
+        {/* Category badge */}
+        {category && (
+          <View
+            className="absolute top-2 left-2 px-2 py-1 rounded"
+            style={{ backgroundColor: getCategoryColor() }}
+          >
+            <Text variant="caption" color="#fff">
+              {category}
+            </Text>
+          </View>
+        )}
+      </View>
+
+      <View className="p-3">
+        <Text weight="medium" numberOfLines={2}>
+          {title}
+        </Text>
+        <Text variant="body-sm" color={colors.secondaryText} className="mt-1">
+          {source}
+        </Text>
       </View>
     </Card>
   );

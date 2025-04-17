@@ -8,8 +8,8 @@ import {
   type TextStyle,
   type ViewStyle,
 } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
-import { BorderRadius, Typography } from "@/constants/theme";
+import { useTheme } from "@components/theme/theme-provider";
+import { BorderRadius, Typography } from "@constants/theme";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -32,8 +32,8 @@ const Button: React.FC<ButtonProps> = ({
   isLoading = false,
   isDisabled = false,
   fullWidth = false,
-  style,
   children,
+  style,
   ...props
 }) => {
   const { colors, isDarkMode } = useTheme();
@@ -42,8 +42,8 @@ const Button: React.FC<ButtonProps> = ({
     switch (variant) {
       case "primary":
         return {
-          backgroundColor: colors.notification,
-          borderColor: colors.notification,
+          backgroundColor: colors.primary,
+          borderColor: colors.primary,
           borderWidth: 1,
         };
       case "secondary":
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
       case "outline":
         return {
           backgroundColor: "transparent",
-          borderColor: colors.notification,
+          borderColor: colors.primary,
           borderWidth: 1,
         };
       case "ghost":
@@ -66,8 +66,8 @@ const Button: React.FC<ButtonProps> = ({
         };
       default:
         return {
-          backgroundColor: colors.notification,
-          borderColor: colors.notification,
+          backgroundColor: colors.primary,
+          borderColor: colors.primary,
           borderWidth: 1,
         };
     }
@@ -129,7 +129,7 @@ const Button: React.FC<ButtonProps> = ({
       case "ghost":
         return {
           ...baseStyle,
-          color: colors.notification,
+          color: colors.primary,
         };
       default:
         return {
@@ -159,12 +159,13 @@ const Button: React.FC<ButtonProps> = ({
       style={buttonStyles}
       disabled={isDisabled || isLoading}
       activeOpacity={0.7}
+      className="py-1.5 px-3 rounded-md text-sm"
       {...props}
     >
       {isLoading ? (
         <ActivityIndicator
           size="small"
-          color={variant === "primary" ? "white" : colors.notification}
+          color={variant === "primary" ? "white" : colors.primary}
         />
       ) : (
         <>

@@ -6,8 +6,8 @@ import {
   type ViewStyle,
   type TouchableOpacityProps,
 } from "react-native";
-import { useTheme } from "@/components/theme/theme-provider";
-import { BorderRadius, Shadows } from "@/constants/theme";
+import { useTheme } from "@components/theme/theme-provider";
+import { BorderRadius, Shadows } from "@constants/theme";
 
 type CardVariant = "elevated" | "outlined" | "filled";
 

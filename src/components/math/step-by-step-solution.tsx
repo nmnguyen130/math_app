@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { View, TouchableOpacity } from "react-native";
-import { Text, Card, Icon } from "@/components/ui";
+import { Text, Card, Icon } from "@components/ui";
 import { ChevronDown, ChevronUp } from "lucide-react-native";
 import MathEquation from "./math-equation";
-import { useTheme } from "@/components/theme/theme-provider";
+import { useTheme } from "@components/theme/theme-provider";
 
 interface Step {
   explanation: string;
@@ -22,7 +22,7 @@ const StepByStepSolution: React.FC<StepByStepSolutionProps> = ({
 }) => {
   const [expandedSteps, setExpandedSteps] =
     useState<number[]>(initialExpandedSteps);
-  const { isDarkMode } = useTheme();
+  const { colors, isDarkMode } = useTheme();
 
   const toggleStep = (index: number) => {
     if (expandedSteps.includes(index)) {
@@ -50,10 +50,10 @@ const StepByStepSolution: React.FC<StepByStepSolutionProps> = ({
         }}
       >
         <TouchableOpacity onPress={expandAll} style={{ marginRight: 16 }}>
-          <Text color={isDarkMode ? "#1890ff" : "#1890ff"}>Expand All</Text>
+          <Text color={colors.primary}>Expand All</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={collapseAll}>
-          <Text color={isDarkMode ? "#1890ff" : "#1890ff"}>Collapse All</Text>
+          <Text color={colors.primary}>Collapse All</Text>
         </TouchableOpacity>
       </View>
 
